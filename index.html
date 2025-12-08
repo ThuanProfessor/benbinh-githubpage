@@ -1,286 +1,609 @@
 <!doctype html>
-<html lang="vi">
+<html lang="vi" class="scroll-smooth">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Cá Viên Sốt Me — Giới Thiệu Sản Phẩm</title>
-  <meta name="description" content="Cá viên sốt me thơm ngon, ăn liền — thông tin sản phẩm, công dụng, cách dùng.">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <title>Cá Viên Sốt Me — Premium Taste</title>
+  <meta name="description" content="Tinh hoa ẩm thực Việt - Cá viên sốt me đậm đà, tiện lợi.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Be Vietnam Pro', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          },
+          colors: {
+            brand: {
+              brown: '#5D3A29',
+              orange: '#E85B2A',
+              cream: '#FFF8F2',
+              light: '#FDFBF7'
+            }
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'float-delayed': 'float 7s ease-in-out 1s infinite',
+            'spin-slow': 'spin 20s linear infinite',
+            'pulse-soft': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-20px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
   <style>
-    :root{
-      --bg1:#6f3b1f; /* warm brown */
-      --bg2:#f7e9db; /* cream */
-      --accent:#e85b2a; /* tamarind orange */
-      --muted:#7a6a5f;
-      --card-shadow: 0 8px 30px rgba(16,16,16,0.12);
-      --glass: rgba(255,255,255,0.6);
-      --max-width:1100px;
+    body {
+      background-color: #FFF8F2;
+      background-image: radial-gradient(#E85B2A 0.5px, transparent 0.5px), radial-gradient(#E85B2A 0.5px, #FFF8F2 0.5px);
+      background-size: 20px 20px;
+      background-position: 0 0, 10px 10px;
+      background-attachment: fixed;
     }
-    *{box-sizing:border-box}
-    body{font-family:Montserrat,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial; margin:0; color:#2d2d2d; background: linear-gradient(180deg,var(--bg1) 0%, #8c4f2a 50%);}
-    .wrap{max-width:var(--max-width); margin:40px auto; padding:28px;}
+    
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #FFF8F2; }
+    ::-webkit-scrollbar-thumb { background: #E85B2A; border-radius: 10px; }
 
-    /* header */
-    header{display:flex;align-items:center;justify-content:space-between; gap:20px;}
-    .brand{display:flex;align-items:center;gap:14px}
-    .logo{width:72px;height:72px;border-radius:14px;background:var(--bg2);display:flex;align-items:center;justify-content:center;box-shadow:var(--card-shadow)}
-    .logo img{max-width:86%;height:auto;border-radius:10px}
-    .title{color:var(--bg2)}
-    .title h1{font-family:'Playfair Display',serif;margin:0;font-size:28px;line-height:1}
-    .title p{margin:0;color:var(--bg2);opacity:0.95}
-
-    nav{margin-left:auto}
-    .nav-links{display:flex;gap:12px}
-    .nav-links a{background:rgba(255,255,255,0.08);color:var(--bg2);padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600}
-
-    /* hero */
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;margin-top:28px;align-items:center}
-    .hero-card{background:var(--bg2);padding:28px;border-radius:20px;box-shadow:var(--card-shadow)}
-    .eyebrow{color:var(--muted);font-weight:600;text-transform:uppercase;font-size:12px}
-    .product-name{font-family:'Playfair Display',serif;color:var(--bg1);font-size:36px;margin:6px 0}
-    .subtitle{color:var(--muted);margin-bottom:12px}
-    .description{color:#4b3a33;line-height:1.5}
-    .cta-row{display:flex;gap:12px;margin-top:18px}
-    .btn{padding:12px 18px;border-radius:12px;border:none;cursor:pointer;font-weight:700}
-    .btn-primary{background:var(--accent);color:white;box-shadow:0 6px 18px rgba(232,91,42,0.28)}
-    .btn-ghost{background:transparent;border:1px solid rgba(77,58,49,0.12);color:var(--bg1)}
-
-    .product-visual{display:flex;flex-direction:column;gap:12px;align-items:center}
-    .product-visual img{width:100%;max-width:360px;border-radius:18px;box-shadow:0 18px 50px rgba(0,0,0,0.25)}
-    .badge{background:linear-gradient(90deg,#fff0f0,#fff6ee);padding:8px 12px;border-radius:999px;font-weight:700;color:var(--bg1)}
-
-    /* features */
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:20px}
-    .feature{background:var(--bg2);padding:18px;border-radius:14px;box-shadow:var(--card-shadow);text-align:center}
-    .feature h4{margin:8px 0 6px}
-    .feature p{margin:0;color:var(--muted);font-size:14px}
-
-    section{margin-top:26px}
-    .two-col{display:grid;grid-template-columns:1fr 360px;gap:18px}
-    .panel{background:var(--bg2);padding:18px;border-radius:14px;box-shadow:var(--card-shadow)}
-
-    ul.facts{list-style:none;padding:0;margin:0}
-    ul.facts li{padding:10px 0;border-bottom:1px dashed rgba(0,0,0,0.04);display:flex;align-items:flex-start;gap:10px}
-    .k{min-width:140px;color:var(--muted);font-weight:600}
-
-    /* nutrition table */
-    table{width:100%;border-collapse:collapse}
-    table th, table td{padding:10px;border-bottom:1px solid rgba(0,0,0,0.06);text-align:left}
-
-    /* benefits list */
-    .benefits{display:flex;flex-direction:column;gap:12px}
-    .chip{display:inline-block;padding:8px 12px;border-radius:18px;background:rgba(232,91,42,0.10);color:var(--bg1);font-weight:700}
-
-    /* footer */
-    footer{margin-top:32px;color:var(--bg2);display:flex;justify-content:space-between;align-items:center}
-
-    /* responsive */
-    @media (max-width:980px){
-      .hero{grid-template-columns:1fr;}
-      .two-col{grid-template-columns:1fr}
-      .grid-3{grid-template-columns:repeat(2,1fr)}
-      nav{display:none}
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.8);
     }
-    @media (max-width:520px){
-      .grid-3{grid-template-columns:1fr}
-      .logo{width:56px;height:56px}
-      .product-name{font-size:26px}
+
+    .glass-nav {
+      background: rgba(255, 248, 242, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(232, 91, 42, 0.1);
     }
+
+    .blob {
+      position: absolute;
+      filter: blur(50px);
+      z-index: -1;
+      opacity: 0.6;
+    }
+
+    .reveal-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    }
+    .reveal-up.active { opacity: 1; transform: translateY(0); }
+    
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    }
+    .reveal-left.active { opacity: 1; transform: translateX(0); }
+
+    .reveal-zoom {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    }
+    .reveal-zoom.active { opacity: 1; transform: scale(1); }
+
+    /* Modal Animation */
+    #order-modal { transition: opacity 0.3s ease, visibility 0.3s ease; }
+    #order-modal.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    #order-modal:not(.hidden) { opacity: 1; visibility: visible; pointer-events: auto; }
+
+    /* Progress bar animation */
+    @keyframes loadProgress {
+      from { width: 0; }
+    }
+    .progress-bar { animation: loadProgress 1.5s ease-out forwards; }
   </style>
 </head>
-<body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="logo">
-          <!-- replace src with your image path (no spaces & accents recommended) -->
-          <img src="https://res.cloudinary.com/dg5ts9slf/image/upload/v1765040281/ca-vien_nlinhj.png" alt="Cá viên sốt me">
+<body class="text-brand-brown overflow-x-hidden selection:bg-brand-orange selection:text-white">
+
+  <!-- Background decorative blobs -->
+  <div class="blob bg-orange-300 w-96 h-96 rounded-full top-0 left-0 -translate-x-1/2 -translate-y-1/2"></div>
+  <div class="blob bg-yellow-200 w-80 h-80 rounded-full top-1/3 right-0 translate-x-1/3"></div>
+  <div class="blob bg-brand-orange w-64 h-64 rounded-full bottom-0 left-10 opacity-20"></div>
+
+  <!-- Navigation -->
+  <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#" class="flex items-center gap-3 group">
+        <!-- REPLACE ICON WITH LOGO IMAGE -->
+        <img src="https://res.cloudinary.com/dg5ts9slf/image/upload/v1765040281/ca-vien_nlinhj.png" alt="BenBinhFood Logo" class="w-12 h-12 rounded-xl shadow-lg group-hover:rotate-12 transition-transform duration-300 object-cover bg-brand-orange p-1">
+        <span class="font-serif font-bold text-2xl tracking-tight">BenBinh<span class="text-brand-orange">Food</span></span>
+      </a>
+
+      <div class="hidden md:flex gap-8 font-medium">
+        <a href="#home" class="hover:text-brand-orange transition-colors">Trang chủ</a>
+        <a href="#about" class="hover:text-brand-orange transition-colors">Về sản phẩm</a>
+        <a href="#nutrition" class="hover:text-brand-orange transition-colors">Dinh dưỡng</a>
+        <button onclick="toggleModal()" class="px-5 py-2 bg-brand-brown text-white rounded-full hover:bg-brand-orange hover:shadow-lg hover:shadow-orange-300/50 transition-all duration-300 transform hover:-translate-y-1">Mua Ngay</button>
+      </div>
+      
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden text-brand-brown" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+      </button>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white/95 absolute w-full p-6 shadow-xl border-t border-gray-100">
+       <div class="flex flex-col gap-4 text-center">
+         <a href="#home" class="py-2 hover:text-brand-orange">Trang chủ</a>
+         <a href="#about" class="py-2 hover:text-brand-orange">Sản phẩm</a>
+         <button onclick="toggleModal()" class="py-3 bg-brand-orange text-white rounded-xl w-full">Mua Ngay</button>
+       </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="min-h-screen pt-28 pb-12 flex items-center relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center w-full">
+      
+      <!-- Text Content -->
+      <div class="order-2 lg:order-1 relative z-10 reveal-left active">
+        <span class="inline-block px-4 py-1.5 rounded-full bg-brand-orange/10 text-brand-orange font-bold text-sm tracking-wide mb-6 border border-brand-orange/20">🔥 SẢN PHẨM MỚI 2025</span>
+        <h1 class="font-serif text-5xl md:text-7xl font-bold leading-tight mb-6">
+          Vị Ngon <br>
+          <span class="text-brand-orange italic pr-2">Đánh Thức</span> <br>
+          Vị Giác
+        </h1>
+        <p class="text-lg text-brand-brown/80 mb-8 max-w-lg leading-relaxed">
+          Sự kết hợp hoàn hảo giữa cá rô phi tươi ngon, mực giòn dai và sốt me chua ngọt đậm đà. Một trải nghiệm ẩm thực bùng nổ ngay tại nhà.
+        </p>
+        
+        <div class="flex flex-wrap gap-4">
+          <button onclick="toggleModal()" class="group relative px-8 py-4 bg-brand-orange text-white rounded-2xl font-bold shadow-xl shadow-orange-400/30 overflow-hidden transition-all hover:scale-105 hover:shadow-orange-400/50">
+            <span class="relative z-10 flex items-center gap-2">
+              Đặt Hàng Ngay 
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+            </span>
+          </button>
+          
+          <button class="px-8 py-4 bg-white border border-brand-brown/10 text-brand-brown rounded-2xl font-bold hover:bg-brand-brown/5 transition-all flex items-center gap-2">
+            <span>▶ Xem Video</span>
+          </button>
         </div>
-        <div class="title">
-          <h1>Cá Viên Sốt Me</h1>
-          <p>Tilapia &amp; Squid Balls in Tamarind Sauce — Sản phẩm chế biến sẵn</p>
+
+        <div class="mt-12 flex gap-8 items-center border-t border-brand-brown/10 pt-8">
+           <div>
+             <div class="font-bold text-3xl font-serif">145<span class="text-base font-sans text-brand-orange">g</span></div>
+             <div class="text-sm text-gray-500 uppercase tracking-wider">Trọng lượng</div>
+           </div>
+           <div class="w-px h-10 bg-brand-brown/20"></div>
+           <div>
+             <div class="font-bold text-3xl font-serif">24<span class="text-base font-sans text-brand-orange">Tháng</span></div>
+             <div class="text-sm text-gray-500 uppercase tracking-wider">Hạn sử dụng</div>
+           </div>
+           <div class="w-px h-10 bg-brand-brown/20"></div>
+           <div>
+             <div class="font-bold text-3xl font-serif">VN</div>
+             <div class="text-sm text-gray-500 uppercase tracking-wider">Xuất xứ</div>
+           </div>
         </div>
       </div>
-      <nav>
-        <div class="nav-links">
-          <a href="#product">Sản phẩm</a>
-          <a href="#congdung">Công dụng</a>
-          <a href="#cachdung">Cách dùng</a>
-          <a href="#lienhe">Liên hệ</a>
-        </div>
-      </nav>
-    </header>
 
-    <main>
-      <div class="hero">
-        <div class="hero-card">
-          <div class="eyebrow">Sản phẩm mới</div>
-          <div class="product-name">Cá Viên Sốt Me</div>
-          <div class="subtitle">Sốt me chua ngọt, hương vị đặc trưng, tiện lợi — phù hợp cho bữa ăn gia đình.</div>
-          <div class="description">
-            Cá viên được làm từ cá rô phi, mực kết hợp sốt me thơm, kết cấu mềm弹, ăn kèm cơm hoặc bún. Sản phẩm đã qua chế biến, dễ sử dụng và bảo quản.
+      <!-- Hero Image -->
+      <div class="order-1 lg:order-2 relative z-10 flex justify-center">
+        <!-- Main Image Container -->
+        <div class="relative w-full max-w-[500px] aspect-square group cursor-pointer">
+          
+          <!-- Animated Backdrop -->
+          <div class="absolute inset-4 bg-gradient-to-br from-brand-orange/20 to-brand-brown/5 rounded-[3rem] -rotate-3 transition-all duration-700 ease-out group-hover:rotate-6 group-hover:scale-105 group-hover:bg-brand-orange/10 shadow-2xl backdrop-blur-sm border border-white/40"></div>
+          
+          <!-- Decorative Circle Behind -->
+          <div class="absolute inset-0 bg-gradient-to-tr from-orange-200/40 to-transparent rounded-full opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-700 -z-10"></div>
+
+          <!-- Main Plate Image -->
+          <img src="https://res.cloudinary.com/dg5ts9slf/image/upload/v1765040283/ok_xkbqfc.png" alt="Cá viên sốt me" 
+               class="relative z-20 w-full h-full object-contain rounded-[3rem] animate-float drop-shadow-2xl transition-all duration-500 ease-out group-hover:scale-110 group-hover:-translate-y-4 group-hover:-rotate-2 group-hover:drop-shadow-[0_25px_25px_rgba(232,91,42,0.25)]">
+          
+          <!-- Floating Ingredients -->
+          <div class="absolute -top-6 -right-6 bg-white/90 p-4 rounded-2xl shadow-lg animate-float-delayed glass-panel z-30 transition-transform duration-500 group-hover:translate-x-2 group-hover:-translate-y-2">
+            <span class="text-2xl">🌶️</span>
+            <span class="font-bold text-xs block text-brand-brown">Cay Nhẹ</span>
           </div>
-
-          <div class="cta-row">
-            <button class="btn btn-primary">Mua Ngay</button>
-            <button class="btn btn-ghost">Tải PDF thông tin</button>
-          </div>
-
-          <div class="grid-3" style="margin-top:18px">
-            <div class="feature">
-              <div class="eyebrow">Trọng lượng</div>
-              <h4>200g</h4>
-              <p>Khối lượng đóng gói</p>
-            </div>
-            <div class="feature">
-              <div class="eyebrow">Hạn sử dụng</div>
-              <h4>2 năm</h4>
-              <p>Từ ngày sản xuất (bảo quản khô ráo)</p>
-            </div>
-            <div class="feature">
-              <div class="eyebrow">Xuất xứ</div>
-              <h4>Việt Nam</h4>
-              <p>Sản xuất tại Nhà máy thực phẩm đạt chuẩn</p>
-            </div>
+          <div class="absolute bottom-10 -left-6 bg-white/90 p-4 rounded-2xl shadow-lg animate-float glass-panel z-30 transition-transform duration-500 group-hover:-translate-x-2 group-hover:translate-y-2">
+            <span class="text-2xl">🍋</span>
+            <span class="font-bold text-xs block text-brand-brown">Me Chua</span>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <aside class="product-visual">
-          <img src="https://res.cloudinary.com/dg5ts9slf/image/upload/v1765040283/ok_xkbqfc.png" style="width: 500px;" alt="Cá viên sốt me chính">
-          <div class="panel" style="text-align:center">
-            <div style="display:flex;justify-content:center;gap:10px;align-items:center">
-              <span class="badge">Sản phẩm an toàn</span>
-              <span style="color:var(--muted);font-weight:600">Khối lượng tịnh: 200g</span>
-            </div>
-          </div>
-        </aside>
+  <!-- Ingredients / About Section -->
+  <section id="about" class="py-20 relative">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16 reveal-up">
+        <h2 class="font-serif text-4xl md:text-5xl font-bold mb-4 text-brand-brown">Thành Phần <span class="text-brand-orange">Tuyệt Hảo</span></h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">Chúng tôi chọn lọc những nguyên liệu tươi ngon nhất để tạo nên hương vị không thể chối từ.</p>
       </div>
 
-      <!-- thông tin chi tiết -->
-      <section id="product">
-        <div class="two-col">
-          <div class="panel">
-            <h3>Thông tin sản phẩm</h3>
-            <p style="color:var(--muted)">Chi tiết thành phần, cách bảo quản và chú ý.</p>
-            <ul class="facts" style="margin-top:12px">
-              <li><span class="k">Thành phần:</span> Cá rô phi (44,4%); Sốt me (37,2%) [Nước, Đường, Me, Tương ớt, Nước mắm, Tương xí muội, Dầu ăn, Chất điều vị (INS 621), Màu điều tự nhiên (Annatto - INS 160b)]; Râu mực (11,1%); Đường; Muối; Tiêu; Tinh bột biến tính (Acetylated distarch adipate - INS 1422); Maltodextrin; Màu điều tự nhiên (Annatto – INS 160b); Hương hải sản tổng hợp.</li>
-              <li><span class="k">Hướng dẫn bảo quản:</span> Bảo quản nơi khô ráo, tránh ánh nắng trực tiếp. Sản phẩm có thể sử dụng ngay, không cần chế biến.</li>
-              <li><span class="k">Ngày sản xuất:</span> 04/01/2004</li>
-              <li><span class="k">Hạn sử dụng:</span> 2 năm kể từ ngày sản xuất</li>
-            </ul>
-
-            <h4 style="margin-top:16px">Thành phần dinh dưỡng trung bình</h4>
-            <table style="margin-top:8px">
-              <thead>
-                <tr><th>Thành phần</th><th>Giá trị</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>Năng lượng</td><td>192 kcal</td></tr>
-                <tr><td>Protein</td><td>16.4g</td></tr>
-                <tr><td>Lipid</td><td>5.3g</td></tr>
-                <tr><td>Carbohydrate</td><td>20.7g</td></tr>
-                <tr><td>Canxi</td><td>64mg</td></tr>
-              </tbody>
-            </table>
-
+      <div class="grid md:grid-cols-3 gap-8 mb-16">
+        <!-- Card 1 -->
+        <div class="glass-panel p-8 rounded-3xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group reveal-up">
+          <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <span class="text-3xl">🐟</span>
           </div>
-
-          <div class="panel">
-            <h3>Đơn vị sản xuất</h3>
-            <p><strong>Công ty:</strong> Khoa Công Nghệ Thực Phẩm - Đại học Công Nghiệp TP.HCM</p>
-            <p><strong>Địa chỉ:</strong> Số 12 Nguyễn Văn Bảo, P. Hạnh Thông, TP.HCM</p>
-            <p><strong>Liên hệ:</strong> 0123456789</p>
-            <div style="margin-top:16px">
-              <h4>Thêm thông tin</h4>
-              <p style="color:var(--muted)">Bạn có thể thêm mã QR để liên kết tới trang bán hàng, video hướng dẫn nấu, hoặc chứng nhận VSATTP.</p>
-            </div>
-          </div>
+          <h3 class="font-serif text-2xl font-bold mb-3">Cá Rô Phi & Mực</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Chiếm hơn 55% thành phần. Thịt cá ngọt mềm kết hợp râu mực giòn sần sật tạo kết cấu thú vị.
+          </p>
         </div>
-      </section>
 
-      <!-- công dụng -->
-      <section id="congdung">
-        <div class="panel">
-          <h3>Công dụng</h3>
-          <div class="benefits" style="margin-top:12px">
-            <div><span class="chip">Tiện lợi</span> Dùng ngay, tiết kiệm thời gian chuẩn bị bữa ăn.</div>
-            <div><span class="chip">Nguồn đạm</span> Cung cấp protein từ cá và mực.</div>
-            <div><span class="chip">Hương vị hấp dẫn</span> Sốt me thơm, chua – ngọt hài hòa.</div>
-            <div><span class="chip">Phù hợp gia đình</span> Dùng kèm cơm, bún hoặc làm món ăn phụ.</div>
+        <!-- Card 2 -->
+        <div class="glass-panel p-8 rounded-3xl shadow-xl border-brand-orange/20 relative overflow-hidden hover:-translate-y-2 transition-all duration-300 reveal-up" style="transition-delay: 100ms;">
+          <div class="absolute -right-10 -top-10 w-32 h-32 bg-brand-orange/10 rounded-full"></div>
+          <div class="w-16 h-16 rounded-full bg-orange-100 flex items-center justify-center mb-6">
+            <span class="text-3xl">🏺</span>
           </div>
+          <h3 class="font-serif text-2xl font-bold mb-3 text-brand-orange">Sốt Me Độc Quyền</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Công thức sốt me 37.2% cân bằng hoàn hảo chua - cay - mặn - ngọt. Màu điều tự nhiên hấp dẫn.
+          </p>
         </div>
-      </section>
 
-      <!-- cách dùng -->
-      <section id="cachdung" style="margin-top:18px">
-        <div class="two-col">
-          <div class="panel">
-            <h3>Cách sử dụng (Gợi ý)</h3>
-            <ol style="padding-left:18px;color:var(--muted);line-height:1.6">
-              <li>Rã đông (nếu đông lạnh) trong ngăn mát hoặc ở nhiệt độ phòng 10–20 phút.</li>
-              <li>Cho cá viên vào chảo, đảo ở lửa vừa 3–4 phút cho nóng đều – hoặc hâm trong lò vi sóng 1–2 phút.</li>
-              <li>Ăn kèm cơm, bún hoặc cuộn bánh tráng kèm rau thơm.</li>
-              <li>Lưu ý: Sản phẩm có thể chứa các thành phần gây dị ứng (hải sản) — kiểm tra kỹ trước khi dùng.</li>
-            </ol>
-
-            <h4 style="margin-top:12px">Mẹo phục vụ</h4>
-            <p style="color:var(--muted)">Thêm hành lá, vừng rang hoặc vài lát ớt tươi để tăng hương vị. Dùng ngay để đảm bảo độ giòn và hương vị.</p>
+        <!-- Card 3 -->
+        <div class="glass-panel p-8 rounded-3xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group reveal-up" style="transition-delay: 200ms;">
+          <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <span class="text-3xl">🛡️</span>
           </div>
+          <h3 class="font-serif text-2xl font-bold mb-3">An Toàn Tuyệt Đối</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Sản xuất tại nhà máy đạt chuẩn. Không hàn the, quy trình đóng gói khép kín đảm bảo vệ sinh.
+          </p>
+        </div>
+      </div>
 
-          <aside class="panel">
-            <h4>Thông số nhanh</h4>
-            <ul style="list-style:none;padding:0;margin:12px 0;color:var(--muted)">
-              <li><strong>Khối lượng tịnh:</strong> 200g</li>
-              <li><strong>Hạn dùng:</strong> 2 năm</li>
-              <li><strong>Bảo quản:</strong> Nơi khô ráo, tránh nắng</li>
-              <li><strong>Xuất xứ:</strong> Việt Nam</li>
-            </ul>
+      <!-- NEW: Detailed Breakdown Table -->
+      <div class="glass-panel p-8 md:p-12 rounded-[2rem] reveal-up relative overflow-hidden border border-white/50 shadow-lg">
+         <!-- Background decoration -->
+        <div class="absolute top-0 left-0 w-32 h-32 bg-brand-orange/5 rounded-br-full -z-10"></div>
+        
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <!-- Left: Charts -->
+          <div>
+            <h3 class="font-serif text-2xl font-bold mb-6 text-brand-brown flex items-center gap-3">
+              <span class="w-2 h-8 bg-brand-orange rounded-full"></span>
+              Tỷ Lệ Vàng Cho Vị Ngon
+            </h3>
+            
+            <div class="space-y-8">
+              <!-- Item 1 -->
+              <div>
+                <div class="flex justify-between mb-2 font-medium text-brand-brown">
+                  <span>Cá Rô Phi Tươi</span>
+                  <span class="text-brand-orange font-bold">44.4%</span>
+                </div>
+                <div class="h-4 w-full bg-white/60 rounded-full overflow-hidden shadow-inner">
+                  <div class="h-full bg-gradient-to-r from-brand-brown to-[#7a4b33] w-[44.4%] rounded-full progress-bar"></div>
+                </div>
+              </div>
 
-            <div style="margin-top:12px;text-align:center">
-              <div style="background:#fff;padding:12px;border-radius:8px;box-shadow:var(--card-shadow)">
-                <strong>Hotline:</strong><br> 0123 456 789
+              <!-- Item 2 -->
+              <div>
+                <div class="flex justify-between mb-2 font-medium text-brand-brown">
+                  <span>Sốt Me Đặc Biệt</span>
+                  <span class="text-brand-orange font-bold">37.2%</span>
+                </div>
+                <div class="h-4 w-full bg-white/60 rounded-full overflow-hidden shadow-inner">
+                  <div class="h-full bg-gradient-to-r from-brand-orange to-orange-400 w-[37.2%] rounded-full progress-bar" style="animation-delay: 0.2s"></div>
+                </div>
+              </div>
+
+              <!-- Item 3 -->
+              <div>
+                <div class="flex justify-between mb-2 font-medium text-brand-brown">
+                  <span>Râu Mực Giòn</span>
+                  <span class="text-brand-orange font-bold">11.1%</span>
+                </div>
+                <div class="h-4 w-full bg-white/60 rounded-full overflow-hidden shadow-inner">
+                  <div class="h-full bg-gradient-to-r from-gray-500 to-gray-400 w-[11.1%] rounded-full progress-bar" style="animation-delay: 0.4s"></div>
+                </div>
               </div>
             </div>
-          </aside>
-        </div>
-      </section>
+          </div>
 
-      <section id="lienhe" style="margin-top:18px">
-        <div class="panel">
-          <h3>Liên hệ & Mua hàng</h3>
-          <p style="color:var(--muted)">Ghé thăm cửa hàng hoặc liên hệ đặt hàng qua số hotline. Bạn cũng có thể quét mã QR bên dưới để đến trang bán hàng.</p>
-          <div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-top:12px">
-            <div style="width:140px;height:140px;border-radius:12px;background:linear-gradient(180deg,#fff,#fff7f2);display:flex;align-items:center;justify-content:center;box-shadow:var(--card-shadow)">
-              <!-- placeholder QR -->
-              <div style="text-align:center;color:var(--muted)">QR CODE</div>
+          <!-- Right: Detailed Text -->
+          <div class="bg-white/40 p-8 rounded-3xl border border-white/60 text-sm text-gray-700 leading-relaxed shadow-sm">
+            <h4 class="font-bold text-brand-brown text-lg mb-4 border-b border-brand-brown/10 pb-2">Bảng Thành Phần Chi Tiết</h4>
+            <div class="space-y-4">
+              <p>
+                <span class="w-3 h-3 rounded-full bg-brand-brown inline-block mr-2"></span>
+                <strong class="text-brand-brown">Thành phần chính:</strong> Cá rô phi (44,4%), Sốt me (37,2%), Râu mực (11,1%).
+              </p>
+              
+              <p>
+                <span class="w-3 h-3 rounded-full bg-brand-orange inline-block mr-2"></span>
+                <strong class="text-brand-orange">Trong sốt me gồm:</strong> Nước, Đường, Me, Tương ớt, Nước mắm, Tương xí muội, Dầu ăn, Chất điều vị (INS 621), Màu điều tự nhiên (Annatto - INS 160b).
+              </p>
+              
+              <p>
+                <span class="w-3 h-3 rounded-full bg-gray-400 inline-block mr-2"></span>
+                <strong class="text-gray-600">Gia vị & Phụ gia:</strong> Đường, Muối, Tiêu, Tinh bột biến tính (INS 1422), Maltodextrin, Hương hải sản tổng hợp.
+              </p>
             </div>
-            <div>
-              <p><strong>Địa chỉ:</strong> Số 12 Nguyễn Văn Bảo, P. Hạnh Thông, TP.HCM</p>
-              <p><strong>Email:</strong> lienhe@benbinhfood.vn</p>
-              <p><strong>Điện thoại:</strong> 0123 456 789</p>
+            
+            <div class="mt-6 pt-4 border-t border-brand-brown/10 italic text-xs text-gray-500 flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              Sản phẩm đạt chuẩn ATVSTP, không chứa các chất cấm theo quy định.
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
-    </main>
+    </div>
+  </section>
 
-    <footer>
-      <div>© 2025 Công Ty Thực Phẩm Bến Bình — bethuandethuong </div>
-     
-    </footer>
+  <!-- Nutrition & Usage Split Section -->
+  <section id="nutrition" class="py-20 bg-white/50">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="glass-panel rounded-[40px] p-8 md:p-12 shadow-2xl overflow-hidden relative">
+        <!-- Background decoration -->
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-orange-50 to-transparent -z-10"></div>
+
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          
+          <!-- Left: Nutrition Table (Updated with Full Data) -->
+          <div class="reveal-left">
+            <h3 class="font-serif text-3xl font-bold mb-8 flex items-center gap-3">
+              <span class="w-10 h-1 bg-brand-orange block rounded-full"></span>
+              Giá Trị Dinh Dưỡng
+            </h3>
+            
+            <div class="space-y-3">
+              <!-- Energy -->
+              <div class="flex justify-between items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center text-brand-orange font-bold">E</div>
+                  <span class="font-medium text-gray-700">Năng lượng</span>
+                </div>
+                <span class="font-bold text-xl text-brand-brown">193 <span class="text-sm font-normal text-gray-500">kcal</span></span>
+              </div>
+              
+              <!-- Protein -->
+              <div class="flex justify-between items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 font-bold">P</div>
+                  <span class="font-medium text-gray-700">Protein (Đạm)</span>
+                </div>
+                <span class="font-bold text-xl text-brand-brown">16.4 <span class="text-sm font-normal text-gray-500">g</span></span>
+              </div>
+              
+              <!-- Lipid -->
+              <div class="flex justify-between items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-red-100 flex items-center justify-center text-red-600 font-bold">L</div>
+                  <span class="font-medium text-gray-700">Lipid (Béo)</span>
+                </div>
+                <span class="font-bold text-xl text-brand-brown">5.3 <span class="text-sm font-normal text-gray-500">g</span></span>
+              </div>
+
+              <!-- Carbs -->
+              <div class="flex justify-between items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-yellow-100 flex items-center justify-center text-yellow-600 font-bold">C</div>
+                  <span class="font-medium text-gray-700">Carbohydrate</span>
+                </div>
+                <span class="font-bold text-xl text-brand-brown">20.7 <span class="text-sm font-normal text-gray-500">g</span></span>
+              </div>
+
+              <!-- Calcium -->
+              <div class="flex justify-between items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center text-gray-600 font-bold">Ca</div>
+                  <span class="font-medium text-gray-700">Canxi</span>
+                </div>
+                <span class="font-bold text-xl text-brand-brown">64 <span class="text-sm font-normal text-gray-500">mg</span></span>
+              </div>
+            </div>
+            
+            <p class="mt-6 text-sm text-gray-500 italic">* Số liệu trung bình trên 100g sản phẩm</p>
+          </div>
+
+          <!-- Right: How to use (Visual Steps) -->
+          <div class="reveal-zoom">
+            <h3 class="font-serif text-3xl font-bold mb-8 flex items-center gap-3">
+              <span class="w-10 h-1 bg-brand-orange block rounded-full"></span>
+              Chế Biến Trong 5 Phút
+            </h3>
+
+            <div class="relative pl-8 border-l-2 border-brand-orange/20 space-y-8">
+              <!-- Step 1 -->
+              <div class="relative group">
+                <div class="absolute -left-[41px] top-0 w-6 h-6 rounded-full bg-brand-orange border-4 border-white shadow-md group-hover:scale-125 transition-transform"></div>
+                <h4 class="font-bold text-lg text-brand-brown">Bước 1: Rã đông</h4>
+                <p class="text-gray-600">Để nhiệt độ phòng 10-20 phút hoặc ngăn mát tủ lạnh.</p>
+              </div>
+
+              <!-- Step 2 -->
+              <div class="relative group">
+                <div class="absolute -left-[41px] top-0 w-6 h-6 rounded-full bg-brand-orange border-4 border-white shadow-md group-hover:scale-125 transition-transform"></div>
+                <h4 class="font-bold text-lg text-brand-brown">Bước 2: Làm nóng</h4>
+                <p class="text-gray-600">Đảo chảo 3-4 phút (lửa vừa) hoặc quay lò vi sóng 1-2 phút.</p>
+              </div>
+
+              <!-- Step 3 -->
+              <div class="relative group">
+                <div class="absolute -left-[41px] top-0 w-6 h-6 rounded-full bg-brand-orange border-4 border-white shadow-md group-hover:scale-125 transition-transform"></div>
+                <h4 class="font-bold text-lg text-brand-brown">Bước 3: Thưởng thức</h4>
+                <p class="text-gray-600">Ăn kèm cơm nóng, bún hoặc cuốn bánh tráng rau sống.</p>
+              </div>
+            </div>
+
+            <div class="mt-8 bg-brand-orange/10 p-4 rounded-xl flex items-start gap-3">
+              <span class="text-2xl">💡</span>
+              <p class="text-sm text-brand-brown font-medium pt-1">Mẹo ngon: Thêm chút hành phi và vừng rang lên trên để món ăn dậy mùi thơm hấp dẫn hơn!</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / Contact Section -->
+  <section id="contact" class="py-20">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <div class="glass-panel p-10 md:p-16 rounded-[3rem] shadow-2xl bg-gradient-to-br from-brand-brown to-[#3a2216] text-white relative overflow-hidden reveal-zoom">
+        
+        <!-- Decoration Circles -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-brand-orange/20 rounded-full translate-y-1/2 -translate-x-1/2 blur-2xl"></div>
+
+        <h2 class="font-serif text-4xl md:text-5xl font-bold mb-6 relative z-10">Sẵn Sàng Thưởng Thức?</h2>
+        <p class="text-white/80 text-lg mb-10 max-w-xl mx-auto relative z-10">
+          Đặt hàng ngay hôm nay để nhận ưu đãi giao hàng miễn phí cho đơn từ 500k trong nội thành TP.HCM.
+        </p>
+
+        <div class="flex flex-col md:flex-row justify-center items-center gap-6 relative z-10">
+          <button onclick="toggleModal()" class="group bg-brand-orange text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-lg shadow-orange-900/50 hover:bg-orange-600 transition-all hover:scale-105 flex items-center gap-3">
+             <span>Mua Ngay</span>
+          </button>
+          
+          <a href="tel:0366889174" class="group bg-white/10 backdrop-blur-md text-white px-8 py-4 rounded-2xl font-bold text-lg border border-white/20 hover:bg-white/20 transition-all flex items-center gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+            0366 889 174
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white/60 border-t border-brand-brown/10 pt-12 pb-8">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-2">
+        <!-- <div class="w-8 h-8 bg-brand-brown rounded-lg flex items-center justify-center text-white font-serif font-bold">B</div> -->
+         <img src="https://res.cloudinary.com/dg5ts9slf/image/upload/v1765040281/ca-vien_nlinhj.png" alt="BenBinhFood Logo" class="w-12 h-12 rounded-xl shadow-lg group-hover:rotate-12 transition-transform duration-300 object-cover bg-brand-orange p-1">
+        <span class="font-bold text-brand-brown">BenBinhFood</span>
+      </div>
+      
+      <div class="text-sm text-gray-500">
+        © 2025 Công Ty Thực Phẩm Bến Bình - Design by BeThuanDeThuong
+      </div>
+      
+      <div class="flex gap-4">
+        <!-- Facebook Icon -->
+        <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-colors">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+        </a>
+        <!-- YouTube Icon -->
+        <a href="https://www.youtube.com/@lowtech25" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-red-600 hover:text-white transition-colors">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z" clip-rule="evenodd" /></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ORDER MODAL (Form Điền Thông Tin) -->
+  <div id="order-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
+    <!-- Backdrop -->
+    <div class="absolute inset-0 bg-brand-brown/60 backdrop-blur-sm" onclick="toggleModal()"></div>
+    
+    <!-- Modal Content -->
+    <div class="relative bg-white rounded-3xl w-full max-w-lg shadow-2xl overflow-hidden transform transition-all scale-100">
+        <!-- Header -->
+        <div class="bg-brand-orange p-6 text-white flex justify-between items-center">
+            <div>
+                <h3 class="font-serif text-2xl font-bold">Đặt Hàng Ngay</h3>
+                <p class="text-white/80 text-sm">Điền thông tin để chúng tôi liên hệ giao hàng</p>
+            </div>
+            <button onclick="toggleModal()" class="text-white/80 hover:text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+        </div>
+
+        <!-- Form Body -->
+        <form class="p-8 space-y-4" onsubmit="event.preventDefault(); alert('Cảm ơn bạn! Đơn hàng đã được gửi đi.'); toggleModal();">
+            <div>
+                <label class="block text-sm font-bold text-brand-brown mb-1">Họ và Tên</label>
+                <input type="text" placeholder="Nhập tên của bạn" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-orange focus:ring-2 focus:ring-orange-200 outline-none transition-all">
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-sm font-bold text-brand-brown mb-1">Số điện thoại</label>
+                    <input type="tel" placeholder="09xxxx..." required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-orange focus:ring-2 focus:ring-orange-200 outline-none transition-all">
+                </div>
+                <div>
+                     <label class="block text-sm font-bold text-brand-brown mb-1">Số lượng (gói)</label>
+                    <input type="number" min="1" value="1" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-orange focus:ring-2 focus:ring-orange-200 outline-none transition-all">
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-sm font-bold text-brand-brown mb-1">Địa chỉ giao hàng</label>
+                <input type="text" placeholder="Số nhà, đường, phường, quận..." required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-orange focus:ring-2 focus:ring-orange-200 outline-none transition-all">
+            </div>
+
+            <div>
+                <label class="block text-sm font-bold text-brand-brown mb-1">Ghi chú (Tùy chọn)</label>
+                <textarea rows="2" placeholder="VD: Giao giờ hành chính..." class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-orange focus:ring-2 focus:ring-orange-200 outline-none transition-all"></textarea>
+            </div>
+
+            <button type="submit" class="w-full bg-brand-brown text-white font-bold py-4 rounded-xl hover:bg-brand-orange shadow-lg hover:shadow-orange-300/50 transition-all transform hover:-translate-y-1 mt-2">
+                Hoàn Tất Đặt Hàng
+            </button>
+        </form>
+    </div>
   </div>
 
   <script>
-    // smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click',function(e){
-        e.preventDefault();
-        const id=this.getAttribute('href');
-        const el=document.querySelector(id);
-        if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
-      })
-    })
+    // --- Scroll Reveal Animation ---
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal-up, .reveal-left, .reveal-zoom').forEach(el => {
+      observer.observe(el);
+    });
+
+    // --- Sticky Navbar Effect ---
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        nav.classList.add('shadow-md', 'bg-white/95');
+        nav.classList.remove('bg-brand-light/85');
+      } else {
+        nav.classList.remove('shadow-md', 'bg-white/95');
+        nav.classList.add('bg-brand-light/85');
+      }
+    });
+
+    // --- Modal Logic ---
+    function toggleModal() {
+        const modal = document.getElementById('order-modal');
+        modal.classList.toggle('hidden');
+    }
   </script>
 </body>
 </html>
